@@ -1,8 +1,16 @@
 const deviceModel = require('../models/smartDevice');
 
 
-const getAllDevices = (deviceId) => {
-
+const getAllDevices = async () => {
+    const projection = {
+        _id: 0
+    }
+    try {
+        return await deviceModel.find({}, projection)
+    } catch (error) {
+        console.log(`There was an error getting device details from db: ${JSON.stringify(error)}`);
+        return Promise.reject(error);
+    }
 };
 
 const addDevice = async (deviceData) => {
@@ -19,8 +27,13 @@ const updateDevice = (deviceData) => {
 
 };
 
-const removeDevice = (deviceId) => {
-
+const removeDevice = async(deviceId) => {
+    try {
+        return await deviceModel.findOneAndDelete({ deviceId })
+    } catch (error) {
+        console.log(`There was an error removing device data from db: ${JSON.stringify(error)}`);
+        return Promise.reject(error);
+    }
 }
 
 module.exports = {

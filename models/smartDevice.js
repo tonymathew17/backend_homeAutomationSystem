@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const SmartDevice = mongoose.Schema({
-    id: {
+    deviceId: {
         type: String,
         required: true
     },

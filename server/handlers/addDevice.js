@@ -14,7 +14,7 @@ const addDevice = async (req, res) => {
     try {
         let deviceData = req.body;
         const deviceId = uuidv4();
-        deviceData.id = deviceId;
+        deviceData.deviceId = deviceId;
         await dbHandler.addDevice(req.body);
         res.status(201).json(helper.createResponseObject('deviceId', deviceId));
     } catch (error) {
