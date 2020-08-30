@@ -11,6 +11,9 @@ const removeDevice = async (req, res) => {
     try {
         const deviceId = req.query.deviceId;
         const removedDevice = await dbHandler.removeDevice(deviceId);
+        if(!removedDevice){
+            throw Error('No device found in db with the given device id');
+        }
         res.status(200).json(helper.createResponseObject('removedDevice', removedDevice));
     } catch (error) {
         const errStatusCode = error.statusCode ? error.statusCode : 500;

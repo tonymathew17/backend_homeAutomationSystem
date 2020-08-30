@@ -6,7 +6,11 @@ const helper = require('../../utils/helper');
 
 const addDeviceValidator = {
     body: Joi.object({
-        device: Joi.string().required()
+        device: Joi.string().required(),
+        manufacturer: Joi.string().required(),
+        deviceType: Joi.string().required(),
+        specifications: Joi.array().required(),
+        warrantyExpiry: Joi.date().required()
     })
 }
 

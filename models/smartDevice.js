@@ -9,6 +9,22 @@ const SmartDevice = mongoose.Schema({
         type: String,
         required: true
     },
+    manufacturer: {
+        type: String,
+        required: true
+    },
+    deviceType: {
+        type: String,
+        required: true
+    },
+    specifications: {
+        type: Array,
+        required: true
+    },
+    warrantyExpiry: {
+        type: Date,
+        required: true
+    },
     timestamp: {
         type: Date,
         required: false,

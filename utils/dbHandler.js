@@ -23,11 +23,16 @@ const addDevice = async (deviceData) => {
     }
 };
 
-const updateDevice = (deviceData) => {
-
+const updateDevice = async (deviceId, updateData) => {
+    try {
+        return await deviceModel.findOneAndUpdate({ deviceId }, updateData)
+    } catch (error) {
+        console.log(`There was an error updating device data in db: ${JSON.stringify(error)}`);
+        return Promise.reject(error);
+    }
 };
 
-const removeDevice = async(deviceId) => {
+const removeDevice = async (deviceId) => {
     try {
         return await deviceModel.findOneAndDelete({ deviceId })
     } catch (error) {
