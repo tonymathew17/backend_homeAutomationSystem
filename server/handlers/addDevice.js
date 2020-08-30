@@ -1,8 +1,14 @@
-const { Joi, validation } = require('express-validation');
+const Joi = require('express-validation').Joi;
 const { v4: uuidv4 } = require('uuid');
 
 const dbHandler = require('../../utils/dbHandler');
 const helper = require('../../utils/helper');
+
+const addDeviceValidator = {
+    body: Joi.object({
+        device: Joi.string().required()
+    })
+}
 
 const addDevice = async (req, res) => {
     try {
@@ -19,5 +25,6 @@ const addDevice = async (req, res) => {
 }
 
 module.exports = {
-    addDevice
+    addDevice,
+    addDeviceValidator
 }
